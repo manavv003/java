@@ -1,0 +1,476 @@
+import java.util.Arrays;
+
+public class SortAndDisplay {
+
+    public static void main(String[] args) {
+        // Ensure that exactly 5 command line arguments are provided
+        if (args.length != 5) {
+            System.out.println("Please provide exactly 5 integer numbers.");
+            return;
+        }
+        
+        // Array to store the integer values
+        int[] numbers = new int[5];
+
+        // Read integers from command line arguments
+        try {
+            for (int i = 0; i < args.length; i++) {
+                numbers[i] = Integer.parseInt(args[i]);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please provide only integer numbers.");
+            return;
+        }
+
+        // Sort the array
+        Arrays.sort(numbers);
+
+        // Display the sorted array
+        System.out.println("Sorted numbers: " + Arrays.toString(numbers));
+
+        // Display the minimum and maximum values
+        System.out.println("Minimum value: " + numbers[0]);
+        System.out.println("Maximum value: " + numbers[numbers.length - 1]);
+    }
+}
+
+q.2
+
+import java.util.Arrays;
+
+public class SortStrings {
+
+    public static void main(String[] args) {
+        // Ensure that exactly 5 command line arguments are provided
+        if (args.length != 5) {
+            System.out.println("Please provide exactly 5 strings.");
+            return;
+        }
+        
+        // Copy command line arguments into a string array
+        String[] strings = args.clone();
+
+        // Sort the array of strings
+        Arrays.sort(strings);
+
+        // Display the sorted array
+        System.out.println("Sorted strings: " + Arrays.toString(strings));
+    }
+}
+
+q.3
+
+import java.util.Scanner;
+
+public class utility {
+
+    public static long factorial(long value) {
+        if (value < 0) {
+            System.out.println("Factorial is not negative numbers.");
+            return -1;
+        }
+        long res = 1;
+        for (long i = 2; i <= value; i++) {
+            res = res * i;
+        }
+        System.out.println("Factorial of "+value+" is: "+res);
+        return res;
+    }
+    
+    public static boolean isPrime(int value) {
+        if (value <= 1) {
+           
+            System.out.println(value+" is not prime number");
+            return false;
+
+        }
+        for (int i = 2; i <= Math.sqrt(value); i++) {
+            if (value % i == 0) {
+                System.out.println(value+" is not prime number");
+
+                return false;
+            }
+        }
+        System.out.println(value+" is prime number");
+
+        return true;
+    }
+
+   
+    public static boolean isEven(long value) {
+        if(value%2==0)
+        {
+            System.out.println(value+" is Even number");
+            return true;
+        }
+        else
+        {
+            System.out.println(value+" is not Even number");
+            return false;
+        }
+    }
+
+   
+    public static boolean isOdd(long value) {
+        if(value%2==1)
+        {
+            System.out.println(value+" is ODD number");
+            return true;
+        }
+        else
+        {
+            System.out.println(value+" is not ODD number");
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter a number to find factorial: ");
+        long f= s.nextLong();
+        factorial(f);
+       
+        System.out.println("");
+        System.out.print("Enter a number to check prime number: ");
+        int p = s.nextInt();
+        isPrime(p);
+
+        System.out.println("");
+        System.out.print("Enter a number to check even number: ");
+        long e= s.nextLong();
+        isEven(e);
+
+        System.out.println("");
+        System.out.print("Enter a number to check odd number: ");
+        long o = s.nextLong();
+        isOdd(o);
+
+        s.close();
+    }
+}
+
+q.4
+
+import java.util.Scanner;
+
+public class Number {
+    private double value;
+    public Number(double value) {
+        this.value = value;
+    }
+    public boolean isZero() {
+        return value == 0;
+    }
+    public boolean isPositive() {
+        return value > 0;
+    }
+    public boolean isNegative() {
+        return value < 0;
+    }
+    public boolean isEven() {
+        return value % 2 == 0;
+    }
+    public boolean isOdd() {
+        return value % 2 != 0;
+    }
+    public double getFactorial() {
+        if (value < 0 || value != (int) value) {
+            System.out.println("Factorial is only defined for non-negative integers.");
+        }
+        double result = 1;
+        for (int i = 2; i <= value; i++) {
+            result *= i;
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        double inputValue = scanner.nextDouble();
+
+        Number number = new Number(inputValue);
+        number.isZero();
+        System.out.println("");
+        System.out.println("The number zero: " + number.isZero());
+        System.out.println("The number positive: " + number.isPositive());
+        System.out.println("The number negative: " + number.isNegative());
+        System.out.println("The number even: " + number.isEven());
+        System.out.println("The number odd: " + number.isOdd());
+        try {
+            System.out.println("Factorial of the number: " + number.getFactorial());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        scanner.close();
+    }
+}
+
+q.5
+
+public class MatrixOperations {
+
+    public static void main(String[] args) {
+        // Example matrices
+        int[][] matrixA = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+        int[][] matrixB = {
+            {9, 8, 7},
+            {6, 5, 4},
+            {3, 2, 1}
+        };
+
+        // Perform matrix operations
+        int[][] resultAdd = addMatrices(matrixA, matrixB);
+        int[][] resultSubtract = subtractMatrices(matrixA, matrixB);
+        int[][] resultMultiply = multiplyMatrices(matrixA, matrixB);
+
+        // Print results
+        System.out.println("Matrix A:");
+        printMatrix(matrixA);
+        System.out.println("Matrix B:");
+        printMatrix(matrixB);
+        System.out.println("Matrix A + Matrix B:");
+        printMatrix(resultAdd);
+        System.out.println("Matrix A - Matrix B:");
+        printMatrix(resultSubtract);
+        System.out.println("Matrix A * Matrix B:");
+        printMatrix(resultMultiply);
+    }
+
+    // Method to add two matrices
+    public static int[][] addMatrices(int[][] a, int[][] b) {
+        int rows = a.length;
+        int cols = a[0].length;
+        int[][] result = new int[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result[i][j] = a[i][j] + b[i][j];
+            }
+        }
+        return result;
+    }
+
+    // Method to subtract two matrices
+    public static int[][] subtractMatrices(int[][] a, int[][] b) {
+        int rows = a.length;
+        int cols = a[0].length;
+        int[][] result = new int[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result[i][j] = a[i][j] - b[i][j];
+            }
+        }
+        return result;
+    }
+
+    // Method to multiply two matrices
+    public static int[][] multiplyMatrices(int[][] a, int[][] b) {
+        int rowsA = a.length;
+        int colsA = a[0].length;
+        int rowsB = b.length;
+        int colsB = b[0].length;
+
+        // Ensure matrices can be multiplied
+        if (colsA != rowsB) {
+            throw new IllegalArgumentException("Number of columns in Matrix A must be equal to number of rows in Matrix B.");
+        }
+
+        int[][] result = new int[rowsA][colsB];
+
+        for (int i = 0; i < rowsA; i++) {
+            for (int j = 0; j < colsB; j++) {
+                result[i][j] = 0;
+                for (int k = 0; k < colsA; k++) {
+                    result[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+        return result;
+    }
+
+    // Method to print a matrix
+    public static void printMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            for (int element : row) {
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+q.6
+
+public class circle {
+    private double x, y;  
+    private double r;     
+
+    public circle() {
+        this.x = 0;
+        this.y = 0;
+        this.r = 1;
+    }
+
+    public circle(double r) {
+        this.x = 0;
+        this.y = 0;
+        this.r = r;
+    }
+
+    public circle(double x, double y, double r) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+    }
+
+    public double area() {
+        return Math.PI * r * r;
+    }
+
+    public double circumference() {
+        return 2 * Math.PI * r;  
+    }
+
+    public double diameter() {
+        return 2 * r;  
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getRadius() {
+        return r;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public void setRadius(double r) {
+        this.r = r;
+    }
+
+    public static void main(String[] args) {
+        circle circle1 = new circle();
+        System.out.println("Circle 1:");
+        System.out.println("Area: " + circle1.area());
+        System.out.println("Circumference: " + circle1.circumference());
+        System.out.println("Diameter: " + circle1.diameter());
+
+        
+    }
+}
+
+q.7
+
+import java.util.Scanner;
+
+class Stack {
+  int top = -1, s[], max;
+  Scanner s1 = new Scanner(System.in);;
+
+  Stack() {
+    max = 5;
+    s = new int[max];
+  }
+
+  Stack(int len) {
+    max = len;
+    s = new int[max];
+  }
+
+  void push() {
+    int ele;
+    if (top == max - 1)
+      System.out.println("\nStack is Overflow..");
+    else {
+      top++;
+      System.out.print("Enter New Element : ");
+      ele = s1.nextInt();
+      s[top] = ele;
+    }
+  }
+
+  void pop() {
+    if (top == -1)
+      System.out.println("\nStack is Underflow..");
+    else {
+      System.out.println("\nRemove Element : " + s[top]);
+      top--;
+    }
+  }
+
+  void traverse() {
+    if (top == -1)
+      System.out.println("\nStack is Underflow..!!");
+    else {
+      System.out.print("Elements : ");
+      for (int i = top; i >= 0; i--)
+        System.out.print(s[i] + " ");
+    }
+  }
+}
+
+class std {
+  static Scanner sc=new Scanner(System.in);
+  public static void operation(Stack s)
+  {
+      while (true)
+      {
+         System.out.println("\n1.PUSH");
+         System.out.println("2.POP");
+         System.out.println("3.Traverse");
+         System.out.println("4.Exit");
+         System.out.print("Enter Your Choice : ");
+         int c=sc.nextInt();
+         switch (c) {
+          case 1:
+            s.push();
+            break;
+          case 2:
+            s.pop();
+            break;
+          case 3:
+            s.traverse();
+            break;
+          case 4:
+            System.exit(0);
+          default:System.out.println("\nPlease,enter valid one above choice");
+            break;
+         }
+      }
+  }
+  public static void main(String args[])
+  {
+
+    boolean t=true;
+    while(t)
+    {
+	  	  Stack s1=new Stack();
+          operation(s1);
+          t=false;
+    
+  }
+  }
+}
+
