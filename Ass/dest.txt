@@ -1,0 +1,3 @@
+Java program
+hii file program to cpoy one file to another
+copy dest.txt to destination.txt
